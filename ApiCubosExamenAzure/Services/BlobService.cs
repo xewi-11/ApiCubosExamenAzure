@@ -7,10 +7,11 @@ namespace ApiCubosExamenAzure.Services
     public class BlobService
     {
         private BlobServiceClient client;
-
-        public BlobService(BlobServiceClient client)
+        private string BlobUri;
+        public BlobService(BlobServiceClient client, IConfiguration configuration)
         {
             this.client = client;
+            this.BlobUri = configuration["AzureStorage:BlobUriImages"];
         }
 
         //METODO PARA RECUPERAR TODOS LOS CONTAINERS
@@ -102,7 +103,7 @@ namespace ApiCubosExamenAzure.Services
 
                 // Generamos la uri completa concatenando el token
                 Uri sasUri = blobClient.GenerateSasUri(sasBuilder);
-                
+
                 return sasUri.AbsoluteUri;
             }
             catch (Exception)
