@@ -24,13 +24,13 @@ ApiOAuthEmpleados.Helpers.HelperCryptography.Initialize(builder.Configuration);
 
 builder.Services.AddControllers();
 
-// Al usar AddAzureKeyVault, AzureStorage--BlobUriUser es convertido automáticamente
-// a "AzureStorage:BlobUriUser". Ya podemos llamarlo normal.
-string? blobUri = builder.Configuration.GetSection("AzureStorage:BlobUriUser").Value;
+// Al usar AddAzureKeyVault, AzureStorage--BlobUriImages es convertido automáticamente
+// a "AzureStorage:BlobUriImages". Ya podemos llamarlo normal.
+string? blobUri = builder.Configuration.GetSection("AzureStorage:BlobUriImages").Value;
 
 if (string.IsNullOrEmpty(blobUri))
 {
-    throw new Exception("La configuración de AzureStorage:BlobUriUser es nula.");
+    throw new Exception("La configuración de AzureStorage:BlobUriImages es nula.");
 }
 
 // Use the connection string constructor to properly initialize the client
