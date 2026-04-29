@@ -26,7 +26,7 @@ builder.Services.AddControllers();
 
 // Al usar AddAzureKeyVault, AzureStorage--BlobUriUser es convertido automáticamente
 // a "AzureStorage:BlobUriUser". Ya podemos llamarlo normal.
-string? blobUri = builder.Configuration.GetValue<string>("AzureStorage:BlobUriUser");
+string? blobUri = builder.Configuration.GetSection("AzureStorage:BlobUriUser").Value;
 
 if (string.IsNullOrEmpty(blobUri))
 {
